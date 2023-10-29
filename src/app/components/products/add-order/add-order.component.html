@@ -2,14 +2,20 @@
 <div mat-dialog-content>
     <form [formGroup]="OrderForm" (ngSubmit)="Submit()">
         <div class="mb-3">
-            <label for="UserId" class="form-label">UserId</label>
+            <label for="UserId" class="form-label">User</label>
             <select class="form-select" formControlName="UserId">
                 <option *ngFor="let res of Customers" [value]="res.Id">{{res.Name}}</option>
             </select>
+            <div *ngIf="Submitted && OrderForm.controls['UserId'].errors?.['required']" class="invalid">
+                User is required
+            </div>
         </div>
         <div class="mb-3">
             <label for="PaymentType" class="form-label">Payment Type</label>
             <input type="text" formControlName="PaymentType" class="form-control" id="PaymentType">
+            <div  *ngIf="Submitted && OrderForm.controls['PaymentType'].errors?.['required']" class="invalid">
+                Payment Type is Requires
+            </div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

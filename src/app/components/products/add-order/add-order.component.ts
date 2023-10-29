@@ -12,6 +12,7 @@ import { ICustomer } from 'src/app/shared/interface/customer';
 export class AddOrderComponent implements OnInit {
 	OrderForm!: FormGroup;
 	Customers!: ICustomer[];
+	Submitted!: boolean;
 	constructor(
 		public dialogRef: MatDialogRef<AddOrderComponent>,
 		@Inject(MAT_DIALOG_DATA) public data: any[],
@@ -55,6 +56,10 @@ export class AddOrderComponent implements OnInit {
 	}
 
 	Submit(): void {
+		this.Submitted = true;
+		if (this.OrderForm.invalid) {
+			return;
+		}
 		this.dialogRef.close({ data: this.OrderForm.getRawValue() });
 	}
 }
