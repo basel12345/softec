@@ -31,6 +31,7 @@ export class OrderDetailsComponent implements OnInit, OnDestroy {
         this.getCustomer();
     }
 
+	// Get All Products Form Method getProducts in productService
     getAllProducts(): void {
         this.ProductSubscription = this.productService.getProducts().subscribe(res => {
             this.AllProducts = res;
@@ -38,15 +39,15 @@ export class OrderDetailsComponent implements OnInit, OnDestroy {
         });
     }
 
+	// Get All Customers Form Method getCustomers in customerService and Customer By User Id
     getCustomer(): void {
         this.CustomerSubscription = this.customerService.getCustomers().subscribe((res: ICustomer[]) => {
             const customer = res.find(({ Id }) => Id === this.data.UserId);
-            console.log(customer);
-            
             if(customer) this.Customer = customer;
         });
     }
 
+	// Get Products By Order Id
     getProductsByOrderId(Products: [{ ProductId: number; Quantity: number; }]): void {
         this.ProductsByOrderId = this.AllProducts.filter((res: IProduct) => Products.find(({ ProductId }) => ProductId === res.ProductId));
     }

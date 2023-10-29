@@ -36,6 +36,7 @@ export class AddOrderComponent implements OnInit {
 		this.InserDataProducts();
 	};
 
+	// Inser Data Products to Products Form Control
 	InserDataProducts() {
 		this.data.forEach(res => {
 			this.Products.push(
@@ -49,6 +50,7 @@ export class AddOrderComponent implements OnInit {
 
 	get Products() { return this.OrderForm.get("Products") as FormArray; }
 
+	// Get All Customers Form Method getCustomers in customerService
 	getAllCustomers() {
 		this.customerService.getCustomers().subscribe(res => {
 			this.Customers = res;

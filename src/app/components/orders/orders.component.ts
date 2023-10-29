@@ -28,16 +28,19 @@ export class OrdersComponent implements OnInit, OnDestroy {
 		this.getAllProducts();
 	}
 
+	// Get All Orders Form Method getOrders in ordereService
 	getAllOrders(): void {
 		this.Orders$ = this.ordereService.getOrders();
 	}
 
+	// Get All Products Form Method getProducts in productService
 	getAllProducts(): void {
 		this.ProductSubscription = this.productService.getProducts().subscribe(res => {
 			this.Products = res;
 		});
 	}
 
+	// Calculate Total Price for Orders 
 	calculateTotalPriceOrders(Products: [{ ProductId: number; Quantity: number; }]) {
 		return this.Products.filter((res: IProduct) => Products.find(({ ProductId }) => ProductId === res.ProductId))
 			.map((res: IProduct) => ({ ...res, Quantity: Products.find(({ ProductId }) => ProductId === res.ProductId)?.Quantity }))

@@ -25,6 +25,7 @@ export class ProductsComponent implements OnInit {
 		this.getAllProducts();
 	}
 
+	// Get All Products Form Method getProducts in productService
 	getAllProducts(): void {
 		this.ProductsSubscription = this.productService.getProducts().subscribe(res => {
 			this.Products = res
