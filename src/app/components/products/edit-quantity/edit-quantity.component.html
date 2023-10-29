@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Edit Quantities</h1>
+<div mat-dialog-content>
+    <form [formGroup]="form" (ngSubmit)="Submit()">
+        <div class="mb-3">
+            <label for="Quantity" class="form-label">Quantity</label>
+            <input type="number" formControlName="AvailablePieces" class="form-control" id="Quantity"
+                aria-describedby="emailHelp">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

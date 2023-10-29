@@ -1,0 +1,32 @@
+
+<button class="btn mx-2 my-2" *ngIf="selectedProducts.length" (click)="addOrder()">Add Order</button>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Product Id</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Img</th>
+                <th scope="col">Product Price</th>
+                <th scope="col">Quantities</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let res of Products">
+                <td>
+                    <input type="checkbox"  (change)="selectProduct($event, res.ProductId)">
+                </td>
+                <td>{{res.ProductId}}</td>
+                <td>{{res.ProductName}}</td>
+                <td><img [src]="res.ProductImg" [alt]="res.ProductImg"></td>
+                <td>{{res.ProductPrice | currency}}</td>
+                <th>{{res.AvailablePieces}}</th>
+                <th [ngClass]="res.AvailablePieces <= 5 ? 'highlight' : null">
+                    <button *ngIf="res.AvailablePieces <= 5" (click)="editQuantityDialog(res)" class="btn">Edit</button>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</div>

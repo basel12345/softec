@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Add Order</h1>
+<div mat-dialog-content>
+    <form [formGroup]="OrderForm" (ngSubmit)="Submit()">
+        <div class="mb-3">
+            <label for="UserId" class="form-label">UserId</label>
+            <select class="form-select" formControlName="UserId">
+                <option *ngFor="let res of Customers" [value]="res.Id">{{res.Name}}</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="PaymentType" class="form-label">Payment Type</label>
+            <input type="text" formControlName="PaymentType" class="form-control" id="PaymentType">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
