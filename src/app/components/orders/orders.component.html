@@ -1,0 +1,22 @@
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Payment Type</th>
+                <th scope="col">Total Price</th>
+                <th scope="col">options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let res of Orders$ | async">
+                <td>{{res.PaymentType}}</td>
+                <td>{{calculateTotalPriceOrders(res.Products) | currency}}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="openDialog(res)">
+                        Details
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
